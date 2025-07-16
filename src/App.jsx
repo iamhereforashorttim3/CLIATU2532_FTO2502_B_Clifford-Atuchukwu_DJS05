@@ -5,6 +5,7 @@ import PodcastPreviews from "./Components/podcastPreview.jsx";
 import { formatDistanceToNow } from "date-fns";
 import { useSearchParams } from "react-router-dom";
 import { processPodcasts } from "./Components/features.jsx";
+import Header from "./Components/Header.jsx";
 /**
  * This component is for displaying and managing the podcasts.
  * It is also for filtering, sorting, search and pagination functionality.
@@ -90,18 +91,7 @@ function App() {
 
   return (
     <div className="app-container">
-      <header className="header">
-        <h3 class="header-title">ReactCast</h3>
-
-        <div className="search">
-          <input
-            type="search"
-            value={search}
-            placeholder="search..."
-            onChange={(e) => updateParam("search", e.target.value)}
-          />
-        </div>
-      </header>
+      <Header />
       <div className="controls">
         <div className="sort">
           <select
