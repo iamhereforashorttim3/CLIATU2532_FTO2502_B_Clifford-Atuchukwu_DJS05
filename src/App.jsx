@@ -137,7 +137,6 @@ function App() {
               podcasts={{
                 img: podcast.image,
                 title: podcast.title,
-                description: podcast.description,
                 seasons: podcast.seasons,
                 genres: getGenres(podcast.genres),
                 updated: formatDistanceToNow(new Date(podcast.updated), {
