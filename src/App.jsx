@@ -2,10 +2,12 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import { genres } from "./Components/data.js";
 import PodcastPreviews from "./Components/podcastPreview.jsx";
-import { formatDistanceToNow } from "date-fns";
 import { useSearchParams } from "react-router-dom";
 import { processPodcasts } from "./Components/features.jsx";
 import Header from "./Components/Header.jsx";
+import Sort from "./Components/sort.jsx";
+import Filter from "./Components/filter.jsx";
+import PodcastGrid from "./Components/podcast-grid.jsx";
 /**
  * This component is for displaying and managing the podcasts.
  * It is also for filtering, sorting, search and pagination functionality.
@@ -93,32 +95,8 @@ function App() {
     <div className="app-container">
       <Header />
       <div className="controls">
-        <div className="sort">
-          <select
-            value={sort}
-            onChange={(e) => updateParam("sort", e.target.value)}
-          >
-            <option value="">Sort</option>
-            <option value="az">A-Z</option>
-            <option value="za">Z-A</option>
-            <option value="new">Newest</option>
-            <option value="old">Oldest</option>
-          </select>
-        </div>
-
-        <div className="filter">
-          <select
-            value={genre}
-            onChange={(g) => updateParam("genre", g.target.value)}
-          >
-            <option value="">All Genres</option>
-            {genres.map((genre) => (
-              <option key={genre.id} value={genre.title}>
-                {genre.title}
-              </option>
-            ))}
-          </select>
-        </div>
+        <Sort sort={sort} updateParam={updateParam} />
+        <Filter genre={genre} genres={genres} updateParam={updateParam} />
       </div>
 
       {loading && <p className="status">Loading podcasts...</p>}
@@ -130,22 +108,7 @@ function App() {
       )}
 
       {!loading && !error && podcastData.length > 0 && (
-        <div className="podcast-grid">
-          {paginatedData.map((podcast) => (
-            <PodcastPreviews
-              key={podcast.id}
-              podcasts={{
-                img: podcast.image,
-                title: podcast.title,
-                seasons: podcast.seasons,
-                genres: getGenres(podcast.genres),
-                updated: formatDistanceToNow(new Date(podcast.updated), {
-                  addSuffix: true,
-                }),
-              }}
-            />
-          ))}
-        </div>
+        <PodcastGrid getGenres={getGenres} paginatedData={paginatedData} />
       )}
 
       {!loading && !error && totalPages > 1 && (
