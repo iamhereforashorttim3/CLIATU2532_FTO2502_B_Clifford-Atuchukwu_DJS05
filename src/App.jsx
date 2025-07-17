@@ -1,12 +1,12 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import { genres } from "./Components/data.js";
-import PodcastPreviews from "./Components/podcastPreview.jsx";
 import { useSearchParams } from "react-router-dom";
 import { processPodcasts } from "./Components/features.jsx";
 import Header from "./Components/Header.jsx";
 import Sort from "./Components/sort.jsx";
 import Filter from "./Components/filter.jsx";
+import Pagination from "./Components/pagination.jsx";
 import PodcastGrid from "./Components/podcast-grid.jsx";
 /**
  * This component is for displaying and managing the podcasts.
@@ -93,7 +93,7 @@ function App() {
 
   return (
     <div className="app-container">
-      <Header />
+      <Header genre={genre} genres={genres} updateParam={updateParam} />
       <div className="controls">
         <Sort sort={sort} updateParam={updateParam} />
         <Filter genre={genre} genres={genres} updateParam={updateParam} />
@@ -112,17 +112,11 @@ function App() {
       )}
 
       {!loading && !error && totalPages > 1 && (
-        <div className="page-numbers">
-          {[...Array(totalPages)].map((_, i) => (
-            <button
-              key={i}
-              onClick={() => updateParam("page", i + 1)}
-              className={page === i + 1 ? "active" : ""}
-            >
-              {i + 1}
-            </button>
-          ))}
-        </div>
+        <Pagination
+          totalPages={totalPages}
+          page={page}
+          updateParam={updateParam}
+        />
       )}
     </div>
   );
