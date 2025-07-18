@@ -1,4 +1,4 @@
-# DJS04
+# DJS05
 
 ### Technology Used:
 * React
@@ -9,30 +9,23 @@
 # How to setup:
 * Clone/Download the file
 * Open the file within VScode
-* Create a new terminal and inside type in "npm run dev"
-* Click/copy the Local link
-* Experiment with the app by changing the dimensions or through the search, sort and filter
+* In a new terminal enter "npm install"
+* Once all files have been downloaded
+* In the terminal type in "npm run dev"
 
 ## Overview:
-* We were tasked with updating the Podcast app to allow the users to dynamically search, sort, filter
-and paginate through the podcast list.
+* The objective for this project is to create a seperate page that displays the details of the show
+selected including being able to switch the seasons of the show. It will involve dynamic routing, with each
+show having it's own unique URL.
 
 ---
 
-## Initial Thoughts:
-* I thought it was going to be relatively smooth sailing judging based off how the previous project went,
-but adding the additional features ended up being more complicated than I anticipated.
-
-## Key Features:
-* Search - A search bar created for the user to find their favourite Podcast by typing in the name or word
-* Sort - Sorting allows the user to search for podcasts starting from A-Z, Z-A, Oldest to Newest and vice versa
-* Filtering - The user can pick a genre based on what they like
-* Pagination - Numbered pages where each page holds exactly nine podcast cards
+## Initial changes:
+I have turned the features implemented in the previous DJS into it's own seperate components and called within the App.jsx:
+- sort = src\components\Sort.jsx
+- filter = src\components\Filter.jsx
+- pagination = src\components\Pagination.jsx
+- Header = src\components\Header.jsx (Contains the search function)
+- Podcast-grid = src\components\Podcast-grid.jsx
 
 ---
-
-## Assistance/References:
-* https://www.youtube.com/watch?v=MxXZCD0XF2k
-* https://mui.com/material-ui/react-pagination/
-* https://youtu.be/c3WSziz_u_o?si=f3mUufEQRF4EH7iW
-* https://youtu.be/HoOt8NeLbv0?si=i-YOUBfNBYjtSuOi
