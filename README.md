@@ -22,10 +22,10 @@ show having it's own unique URL.
 
 ## Initial changes:
 I have turned the features implemented in the previous DJS into it's own seperate components and called within the App.jsx:
-- sort = src\Components\sort.jsx
-- filter = src\Components\filter.jsx
-- pagination = src\Components\pagination.jsx
-- Header = src\Components\Header.jsx (Contains the search function)
-- Podcast-grid = src\Components\podcast-grid.jsx
+- sort = src\components\Sort.jsx
+- filter = src\components\Filter.jsx
+- pagination = src\components\Pagination.jsx
+- Header = src\components\Header.jsx (Contains the search function)
+- Podcast-grid = src\components\Podcast-grid.jsx
 
 ---
