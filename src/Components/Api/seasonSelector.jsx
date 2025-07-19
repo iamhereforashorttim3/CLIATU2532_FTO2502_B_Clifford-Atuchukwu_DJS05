@@ -1,16 +1,23 @@
 export default function SeasonSelector({ seasons, selectedSeason, onChange }) {
   function handleChange(e) {
-    const season = seasons.find((s) => s.season === +e.target.value);
-    onChange(season);
+    const seasonNumber = parseInt(e.target.value);
+    const selected = seasons.find((s) => s.season === seasonNumber);
+    onChange(selected);
   }
 
   return (
-    <select value={selectedSeason?.season || ""} onChange={handleChange}>
-      {seasons.map((s) => (
-        <option key={s.season} value={s.season}>
-          Season {s.season}
-        </option>
-      ))}
-    </select>
+    <div className="season-selector">
+      <select
+        id="season-select"
+        onChange={handleChange}
+        value={selectedSeason?.season || ""}
+      >
+        {seasons.map((s) => (
+          <option key={s.season} value={s.season}>
+            season {s.season}
+          </option>
+        ))}
+      </select>
+    </div>
   );
 }
