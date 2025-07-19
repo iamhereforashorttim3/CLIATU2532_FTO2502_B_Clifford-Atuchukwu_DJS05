@@ -1,4 +1,6 @@
-export default function DetailPageContents({ show }) {
+import SeasonDetail from "./SeasonDetail";
+
+export default function DetailPageContents({ show, selectedSeason }) {
   return (
     <>
       <div className="detail-header">
@@ -7,8 +9,11 @@ export default function DetailPageContents({ show }) {
         <p>{show.genres}</p>
         <p>{show.description}</p>
       </div>
-      <h1>Current Season</h1>
-      <div className="current"></div>
+
+      <div className="current">
+        <h1>Current Season</h1>
+        <SeasonDetail season={selectedSeason} />
+      </div>
     </>
   );
 }
