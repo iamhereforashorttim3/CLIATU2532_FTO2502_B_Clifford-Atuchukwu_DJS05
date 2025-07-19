@@ -5,14 +5,16 @@ import { Link } from "react-router-dom";
  * @param {*} param0
  * @returns A card that displays the podcast preview
  */
-export default function PodcastPreviews({ podcasts, shows }) {
+export default function PodcastPreviews({ podcasts }) {
+  if (!podcasts) {
+    return null;
+  }
   return (
     <>
-      <Link to={`/detail/${podcasts.title}`}>
+      <Link to={`/detail/${podcasts.id}`}>
         <div className="podcastPreview">
           <img className="image" src={podcasts.img} />
           <h1 className="title">{podcasts.title}</h1>
-          <p className="descriptions">{podcasts.description}</p>
           <p className="seasons">Seasons: {podcasts.seasons}</p>
           <div className="genres">
             {podcasts.genres.map((genres, index) => (
