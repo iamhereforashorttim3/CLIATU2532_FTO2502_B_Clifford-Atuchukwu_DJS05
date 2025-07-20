@@ -10,16 +10,27 @@ export default function DetailPageContents({ show, selectedSeason }) {
   return (
     <>
       <div className="detail-header">
-        <h1>{show.title}</h1>
-        <img src={show.image} />
-        <GenresApi genreNames={show.genres} />
-
-        <p>{show.description}</p>
-        <p>Total Seasons: {show.seasons?.length || "N/A"}</p>
-        <p>Total Episodes: {totalEpisodes || "N/A"}</p>
-        <p>Last Updated: {new Date(show.updated).toLocaleDateString()}</p>
+        <div className="left-content">
+          <h1 className="show-title">{show.title}</h1>
+          <p className="show-description">{show.description}</p>
+          <div className="show-stats">
+            <p className="show-seasons">
+              Total Seasons: {show.seasons?.length || "N/A"}
+            </p>
+            <p className="show-episodes">
+              Total Episodes: {totalEpisodes || "N/A"}
+            </p>
+            <p className="last-updated">
+              Last Updated: {new Date(show.updated).toLocaleDateString()}
+            </p>
+          </div>
+        </div>
+        <img
+          className="show-image"
+          src={show.image}
+          alt={`${show.title} cover`}
+        />
       </div>
-
       <div className="current">
         <h1>Current Season</h1>
         <SeasonDetail season={selectedSeason} />
