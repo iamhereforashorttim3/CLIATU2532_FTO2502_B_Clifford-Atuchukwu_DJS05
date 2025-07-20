@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import SeasonSelector from "./Components/utility/seasonSelector";
 import DetailPageContents from "./Components/detailPageContents";
+import LoadingSpinner from "./Components/Utility/loadingSpinner";
 
 /**
  * Renders the detail page for the specific podcast based on the ID of the URL.
@@ -54,7 +55,7 @@ function DetailPage() {
     fetchDetails();
   }, [id]);
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <LoadingSpinner />;
   if (error) return <p>There was an error {error.message}</p>;
   if (!show) return null;
 
