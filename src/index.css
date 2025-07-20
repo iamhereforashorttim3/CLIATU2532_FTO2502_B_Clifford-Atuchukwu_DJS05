@@ -51,12 +51,12 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
 .show-image {
-  width: 300px;
-  height: auto;
+  width: 400px;
+  height: 400px;
   object-fit: fill;
   border-radius: 0.5rem;
   border: 1px solid var(--border);
