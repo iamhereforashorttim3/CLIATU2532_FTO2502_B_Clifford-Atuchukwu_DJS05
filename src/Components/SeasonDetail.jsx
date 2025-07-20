@@ -1,12 +1,19 @@
 export default function SeasonDetail({ season }) {
   if (!season) return null;
+  console.log(season.episodes);
 
   return (
     <>
       <div className="season-detail">
-        <h1 className="season-title">{season.title}</h1>
+        <div className="season-season">
+          <h2 className="season-number">Season: {season.season}</h2>
+          <h1 className="season-title">{season.title}</h1>
+        </div>
         <img className="season-image" src={season.image} alt={season.title} />
         <p className="season-description">{season.description}</p>
+        <p className="season-episode">
+          {season.episodes.length} Episode{season.episodes.length !== 1 && `s`}
+        </p>
       </div>
       <div className="episodes">
         <h2>Episodes</h2>
