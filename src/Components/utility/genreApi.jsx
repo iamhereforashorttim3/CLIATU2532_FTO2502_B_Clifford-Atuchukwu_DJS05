@@ -6,7 +6,9 @@ export default function GenresApi({ genreNames }) {
       <p>Genres:</p>
       <ul>
         {genreNames.map((genre, index) => (
-          <li key={index}>{genre}</li>
+          <li className="show-genre" key={index}>
+            {genre}
+          </li>
         ))}
       </ul>
     </div>
