@@ -1,19 +1,14 @@
-import { useEffect, useState } from "react";
+export default function GenresApi({ genreNames }) {
+  if (!genreNames || genreNames.length === 0) return <p>Genres: Unknown</p>;
 
-export default function GenresApi({genreIds}) {
-    const [genreNames, setGenreNames] = useState([]);
-
-    useEffect(() => {
-        async function fetchGenres() {
-            try {
-                const response = await Promise.all(
-                    genreIds.map(async (id) => {
-                        const response = await fetch(`https://podcast-api.netlify.app/genre/${id}`)
-                        const data = await response.json();
-                        return data.name || "Unknown";
-                    })
-                )
-            }
-        }
-    })
+  return (
+    <div>
+      <p>Genres:</p>
+      <ul>
+        {genreNames.map((genre, index) => (
+          <li key={index}>{genre}</li>
+        ))}
+      </ul>
+    </div>
+  );
 }
