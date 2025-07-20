@@ -29,3 +29,15 @@ I have turned the features implemented in the previous DJS into it's own seperat
 - Podcast-grid = src\components\Podcast-grid.jsx
 
 ---
+## Major Functions and Use:
+* src\Components\detailPageContents.jsx - It's purpose is to render the header of the show clicked by the user.
+* src\Components\podcastPreview.jsx - When the user clicks any of the podcasts it sends them to the direct page, because it was wrapped in a <Link> with the destination to the Podcasts.id
+* src\Components\SeasonDetail.jsx - Creates and renders the structure of the season/episode details
+* src\Components\Utility\seasonSelector.jsx - A select dropdown where the user can click through each season of the podcast and see the information regarding the chosen season.
+* src\detailPage.jsx - This is where the detail components are ran and exported to the main.jsx
+---
+
+## Limitations:
+* Sort, Filter and Pagination set before in the home page is lost when returning from the details page
+* Urls are unique to the podcast, but do not show the name of the Podcast rather the ID.
+  
