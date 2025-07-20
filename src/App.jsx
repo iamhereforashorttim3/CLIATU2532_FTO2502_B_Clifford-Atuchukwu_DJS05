@@ -8,6 +8,7 @@ import Sort from "./Components/sort.jsx";
 import Filter from "./Components/filter.jsx";
 import Pagination from "./Components/pagination.jsx";
 import PodcastGrid from "./Components/podcast-grid.jsx";
+import { getGenres } from "./Components/utility/getGenres.jsx";
 /**
  * This component is for displaying and managing the podcasts.
  * It is also for filtering, sorting, search and pagination functionality.
@@ -78,18 +79,6 @@ function App() {
     currentPage: page,
     itemsPerPage: perPage,
   });
-
-  /**
-   * @function getGenres
-   * @param {number[]} genreIds - An array of the genre IDs from the podcast data
-   * @returns {string[]} An array of genre titles, returns "unknown" if there's no match
-   */
-  const getGenres = (genreIds) => {
-    return genreIds.map((id) => {
-      const found = genres.find((genre) => genre.id === id);
-      return found ? found.title : "Unknown";
-    });
-  };
 
   return (
     <div className="app-container">
