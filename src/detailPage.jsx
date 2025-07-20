@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import SeasonSelector from "./Components/Api/seasonSelector";
+import DetailPageContents from "./Components/detailPageContents";
 
 function DetailPage() {
   const { id } = useParams();
   const [show, setShow] = useState();
+  const [selectedSeason, setSelectedSeason] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -15,7 +18,14 @@ function DetailPage() {
       }
       const data = await response.json();
 
+      const selectedShow = data;
+
+      if (!selectedShow) {
+        throw new Error("Podcast not found");
+      }
+
       setShow(data);
+      setSelectedSeason(data.seasons[0]);
       setError(null);
     } catch (error) {
       console.error("This did not work", error);
@@ -28,11 +38,20 @@ function DetailPage() {
   useEffect(() => {
     fetchDetails();
   }, [id]);
-  console.log("Shows", show);
+
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>There was an error {error.message}</p>;
+  if (!show) return null;
 
   return (
     <>
-      <h1>This is text</h1>
+      <DetailPageContents show={show} selectedSeason={selectedSeason} />
+
+      <SeasonSelector
+        seasons={show.seasons}
+        selectedSeason={selectedSeason}
+        onChange={setSelectedSeason}
+      />
     </>
   );
 }
