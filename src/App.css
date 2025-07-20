@@ -43,6 +43,21 @@ body {
   height: 100%;
   padding: 10px;
 }
+.error-later {
+  font-size: 2rem;
+  color: gray;
+  font-weight: 500;
+  justify-content: center;
+}
+
+.error-wrong {
+  font-size: 2rem;
+  color: red;
+  font-weight: 500;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
 
 .podcastPreview .card-body {
   padding: 1rem;

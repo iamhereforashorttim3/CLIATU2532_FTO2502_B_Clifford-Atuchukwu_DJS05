@@ -38,7 +38,7 @@ function App() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch("https://podcast-api.netlify.app");
+        const response = await fetch("https://podcast-api.netlfy.app");
 
         if (!response.ok) {
           throw new Error("Failed to fetch podcasts");
@@ -88,12 +88,16 @@ function App() {
         <Filter genre={genre} genres={genres} updateParam={updateParam} />
       </div>
 
-      {loading && <p className="status">Loading podcasts...</p>}
+      {loading && <p className="status"></p>}
 
-      {error && <p className="status error">Error: {error}</p>}
+      {error && (
+        <p className="error-wrong">Something has gone wrong: {error}</p>
+      )}
 
       {!loading && !error && podcastData.length === 0 && (
-        <p className="status empty">No podcasts available.</p>
+        <p className="error-later">
+          Sorry, there are no podcasts available. Come back later.
+        </p>
       )}
 
       {!loading && !error && podcastData.length > 0 && (
