@@ -38,6 +38,6 @@ I have turned the features implemented in the previous DJS into it's own seperat
 ---
 
 ## Limitations:
-* Sort, Filter and Pagination set before in the home page is lost when returning from the details page
 * Urls are unique to the podcast, but do not show the name of the Podcast rather the ID.
+* some of the shows do not feature genres, but are met with an "Unknown"
   
