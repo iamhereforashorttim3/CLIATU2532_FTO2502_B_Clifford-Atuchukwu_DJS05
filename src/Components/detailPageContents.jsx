@@ -1,5 +1,5 @@
-import GenresApi from "./utility/genreApi";
 import SeasonDetail from "./SeasonDetail";
+import GenresApi from "./utility/genreApi";
 
 export default function DetailPageContents({ show, selectedSeason }) {
   console.log("DetailPageContents show", show);
@@ -13,6 +13,7 @@ export default function DetailPageContents({ show, selectedSeason }) {
         <div className="left-content">
           <h1 className="show-title">{show.title}</h1>
           <p className="show-description">{show.description}</p>
+          <GenresApi genreNames={show.genres} />
           <div className="show-stats">
             <p className="show-seasons">
               Total Seasons: {show.seasons?.length || "N/A"}
@@ -21,7 +22,12 @@ export default function DetailPageContents({ show, selectedSeason }) {
               Total Episodes: {totalEpisodes || "N/A"}
             </p>
             <p className="last-updated">
-              Last Updated: {new Date(show.updated).toLocaleDateString()}
+              Last Updated:{" "}
+              {new Date(show.updated).toLocaleDateString("en-GB", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              })}{" "}
             </p>
           </div>
         </div>
@@ -30,10 +36,10 @@ export default function DetailPageContents({ show, selectedSeason }) {
           src={show.image}
           alt={`${show.title} cover`}
         />
-      </div>
-      <div className="current">
-        <h1>Current Season</h1>
-        <SeasonDetail season={selectedSeason} />
+        <div className="current">
+          <h1>Current Season</h1>
+          <SeasonDetail season={selectedSeason} />
+        </div>
       </div>
     </>
   );
