@@ -1,7 +1,7 @@
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import DetailPage from "./detailPage.jsx";
 import App from "./App.jsx";
 
 /**
@@ -9,6 +9,10 @@ import App from "./App.jsx";
  */
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
-    <App />
+    <Link to="/">Home</Link>
+    <Routes>
+      <Route path="/" element={<App />} />
+      <Route path="/detail/:id" element={<DetailPage />} />
+    </Routes>
   </BrowserRouter>
 );
