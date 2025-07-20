@@ -1,3 +1,10 @@
+/**
+ *
+ * @param {object} component props
+ * @param {Array<object>} props.seasons - An array of season objects
+ * @param {object} props.selectedSeason - The selected season object
+ * @returns {JSX.Element} A select dropdown with the season options
+ */
 export default function SeasonSelector({ seasons, selectedSeason, onChange }) {
   function handleChange(e) {
     const seasonNumber = parseInt(e.target.value);
